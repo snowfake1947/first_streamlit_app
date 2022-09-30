@@ -9,5 +9,6 @@ streamlit.header('🍌🥭Make your own smoothie🥝🍇')
 
 my_first_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 my_first_list = my_first_list.set_index('Fruit')
-streamlit.multiselect('Pick some fruits:',list(my_first_list.index),['Avocado','Honeydew'])
-streamlit.dataframe(my_first_list)
+fruits_selected = streamlit.multiselect('Pick some fruits:',list(my_first_list.index),['Avocado','Honeydew'])
+fruits_to_show=streamlit.loc[fruits_selected]
+streamlit.dataframe(fruits_to_show)
